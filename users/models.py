@@ -1,9 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
-class Account(AbstractBaseUser):
-    email = models.EmailField(max_length=255, unique=True)
-    full_name = models.CharField(max_length=50)
-    is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
+from .managers import AccountManager
+
+class Account(AbstractUser):
+    username = None
+    email = models.EmailField(_('email address'), unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+    objects = AccountManager()
+    
+    def __str__(self):
+        return self.email
