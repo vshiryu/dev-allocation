@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+    container_name: dev-allocation-backend
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres:15
+    container_name: dev-allocation-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: developerpassword
+      POSTGRES_DB: dev_allocation
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
