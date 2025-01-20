@@ -39,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'django.contrib.sites',
     'users',
+    'technologies',
+    'programmers',
+    'projects',
+    'allocations',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +75,21 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Dev Allocation API',
+    'DESCRIPTION': 'An API to allocate developers in projects',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
 
 WSGI_APPLICATION = 'dev_allocation.wsgi.application'
 
@@ -113,6 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.Account'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
