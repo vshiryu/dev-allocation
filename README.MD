@@ -34,18 +34,11 @@ docker-compose up --build
 ou
 docker compose up --build
 
-4. Rodando as Migrações
-
-Com os containers subidos, é necessário rodar as migrações do banco de dados.
-
-docker-compose exec backend bash
-python manage.py migrate
-
-5. Acesse a API
+4. Acesse a API
 
 A API estará rodando na URL http://localhost:8000/.
 
-6. Testando a API com Swagger
+5. Testando a API com Swagger
 
 Swagger na seguinte URL:
 
