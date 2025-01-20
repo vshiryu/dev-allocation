@@ -71,3 +71,30 @@ class UserLoginView(APIView):
             "refresh": str(refresh),
             "access": str(refresh.access_token),
         }, status=status.HTTP_200_OK)
+
+@extend_schema_view(
+    post=extend_schema(
+        request=None,
+        responses={
+            200: TokenResponseSerializer,
+            401: {"description": "Invalid refresh token"},
+        }
+    )
+)
+
+class TokenRefreshView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        refresh_token = request.data.get("refresh")
+        if not refresh_token:
+            return Response({"error": "Refresh token is required."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            refresh = RefreshToken(refresh_token)
+            access_token = refresh.access_token
+            return Response({
+                "access": str(access_token),
+                "refresh": str(refresh),
+            }, status=status.HTTP_200_OK)
+        except Exception:
+            return Response({"error": "Invalid refresh token."}, status=status.HTTP_401_UNAUTHORIZED)
