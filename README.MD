@@ -6,7 +6,6 @@ Certifique-se de ter os seguintes programas instalados:
 
 - Docker
 - Docker Compose
-- Python 3.10 ou superior
 
 ## Passos para Rodar a API
 
