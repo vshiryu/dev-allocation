@@ -12,8 +12,19 @@ class AllocationSerializer(serializers.ModelSerializer):
         required_technologies = project.technologies.all()
         hours = attrs.get('hours')
 
-        if not any(tech in programmer.technologies.all() for tech in required_technologies):
+        if Allocation.objects.filter(project=project, programmer=programmer).exists():
+            raise serializers.ValidationError("Programmer is already allocated to this project.")
+
+        has_required_technology = False
+
+        for tech in required_technologies:
+            if tech in programmer.technologies.all():
+                has_required_technology = True
+                break
+
+        if not has_required_technology: 
             raise serializers.ValidationError("Programmer must have at least one technology required by the project.")
+
         
         start_date = project.start_date
         end_date = project.end_date
