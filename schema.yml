@@ -1,0 +1,842 @@
+openapi: 3.0.3
+info:
+  title: Your Project API
+  version: 1.0.0
+  description: Your project description
+paths:
+  /api/allocations/:
+    get:
+      operationId: allocations_list
+      tags:
+      - allocations
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Allocation'
+          description: ''
+    post:
+      operationId: allocations_create
+      tags:
+      - allocations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Allocation'
+          description: ''
+  /api/allocations/{id}/:
+    get:
+      operationId: allocations_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this allocation.
+        required: true
+      tags:
+      - allocations
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Allocation'
+          description: ''
+    put:
+      operationId: allocations_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this allocation.
+        required: true
+      tags:
+      - allocations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Allocation'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Allocation'
+          description: ''
+    patch:
+      operationId: allocations_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this allocation.
+        required: true
+      tags:
+      - allocations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAllocation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAllocation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAllocation'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Allocation'
+          description: ''
+    delete:
+      operationId: allocations_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this allocation.
+        required: true
+      tags:
+      - allocations
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/programmers/:
+    get:
+      operationId: programmers_list
+      tags:
+      - programmers
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Programmer'
+          description: ''
+    post:
+      operationId: programmers_create
+      tags:
+      - programmers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programmer'
+          description: ''
+  /api/programmers/{id}/:
+    get:
+      operationId: programmers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this programmer.
+        required: true
+      tags:
+      - programmers
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programmer'
+          description: ''
+    put:
+      operationId: programmers_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this programmer.
+        required: true
+      tags:
+      - programmers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Programmer'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programmer'
+          description: ''
+    patch:
+      operationId: programmers_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this programmer.
+        required: true
+      tags:
+      - programmers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProgrammer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProgrammer'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProgrammer'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Programmer'
+          description: ''
+    delete:
+      operationId: programmers_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this programmer.
+        required: true
+      tags:
+      - programmers
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/projects/:
+    get:
+      operationId: projects_list
+      tags:
+      - projects
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+          description: ''
+    post:
+      operationId: projects_create
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Project'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+  /api/projects/{id}/:
+    get:
+      operationId: projects_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    put:
+      operationId: projects_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Project'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    patch:
+      operationId: projects_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    delete:
+      operationId: projects_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/technologies/:
+    get:
+      operationId: technologies_list
+      tags:
+      - technologies
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Technology'
+          description: ''
+    post:
+      operationId: technologies_create
+      tags:
+      - technologies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technology'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Technology'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Technology'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technology'
+          description: ''
+  /api/technologies/{id}/:
+    get:
+      operationId: technologies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this technology.
+        required: true
+      tags:
+      - technologies
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technology'
+          description: ''
+    put:
+      operationId: technologies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this technology.
+        required: true
+      tags:
+      - technologies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technology'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Technology'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Technology'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technology'
+          description: ''
+    patch:
+      operationId: technologies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this technology.
+        required: true
+      tags:
+      - technologies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTechnology'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTechnology'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTechnology'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Technology'
+          description: ''
+    delete:
+      operationId: technologies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this technology.
+        required: true
+      tags:
+      - technologies
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/users/login/:
+    post:
+      operationId: users_login_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+          description: ''
+        '401':
+          content:
+            application/json:
+              schema:
+                description: Invalid credentials
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Invalid data
+          description: ''
+  /api/users/register/:
+    post:
+      operationId: users_register_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreatedResponse'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                description: Invalid data
+          description: ''
+components:
+  schemas:
+    Allocation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project:
+          type: integer
+        programmer:
+          type: integer
+        hours:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+      required:
+      - hours
+      - id
+      - programmer
+      - project
+    PatchedAllocation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project:
+          type: integer
+        programmer:
+          type: integer
+        hours:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+    PatchedProgrammer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        technologies:
+          type: array
+          items:
+            type: integer
+    PatchedProject:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        technologies:
+          type: array
+          items:
+            type: integer
+    PatchedTechnology:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+    Programmer:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        technologies:
+          type: array
+          items:
+            type: integer
+      required:
+      - id
+      - name
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        technologies:
+          type: array
+          items:
+            type: integer
+      required:
+      - end_date
+      - id
+      - name
+      - start_date
+      - technologies
+    Technology:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+      required:
+      - id
+      - name
+    TokenResponse:
+      type: object
+      properties:
+        refresh:
+          type: string
+        access:
+          type: string
+      required:
+      - access
+      - refresh
+    UserCreatedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+    UserRegister:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+          minLength: 8
+      required:
+      - email
+      - password
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

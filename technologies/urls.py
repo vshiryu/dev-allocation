@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import TechnologyViewSet
 
 router = DefaultRouter()
-router.register(r'technologies', TechnologyViewSet)
+router.register('technologies', TechnologyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
